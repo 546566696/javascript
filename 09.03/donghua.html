@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>js动画效果</title>
+	<meta charset="utf-8">
+	<style>
+		body{
+			margin: 0 auto;
+			padding:0 auto;
+		}
+		#box{
+			width: 200px;
+			height: 300px;
+			background: red;
+			left:-200px;
+			position:relative;
+		}
+		#share{
+			width: 20px;
+			height: 50px;
+			background: blue;
+			position:absolute;
+			left:200px;
+			top:100px;
+			color:white;
+		}
+		#box1{
+			width:200px;
+			height:200px;
+			background:blue;
+			filter:alpha(opacity:30);
+			opacity:0.3;
+		}
+	</style>
+	<script>
+	window.onload = function(){
+		// var box=document.getElementById('box');
+		box.onmouseover = function(){
+			startMove(0); 
+		}
+		box.onmouseout = function(){
+			startMove(-200); 
+
+		}
+		box1.onmouseover=function(){
+			startOpacity(100);
+		}
+		box1.onmouseout=function(){
+			startOpacity(30);
+		}
+
+	}
+	var timer= null;
+	function startMove(tag){
+		// var box=document.getElementById('box');
+		clearInterval(timer);
+		var speed=0;
+		if(box.offsetLeft>tag){
+			speed= -10;
+		}else{
+			speed= 10;
+		}
+		timer=setInterval(function(){
+			if(box.offsetLeft==tag){
+			clearInterval(timer);
+		}else{
+			box.style.left=box.offsetLeft+speed+'px';
+		}},50)
+	}
+	function startOpacity(opa){
+		var box1=document.getElementById('box1');
+		clearInterval(timer);
+		timer=setInterval(function(){
+			box1.style.opacity=opa/100;
+			box1.style.filter='alpha(opacity:'+opa+')';
+		},300);
+	}
+	</script>
+</head>
+<body>
+	<div id="box">完了完了
+		<span id="share">
+			分享
+		</span>
+	</div>
+	<div id="box1"></div>
+</body>
+</html>

@@ -1,0 +1,23 @@
+<html>
+<head>
+	<title>js基础</title>
+	<meta charset="utf-8">
+	<script>
+		function displayDate(){
+			var newDate=document.getElementById("date");
+			newDate.innerHTML=Date();
+			console.log(newDate);
+		}
+	</script>
+</head>
+<body>
+	<div id="date">这里显示时间</div>
+	<input type="button" onclick="displayDate()" value="显示日期">
+	<script>
+		document.write("<p>这里是通过JS输出的！</p>"); 
+
+	</script>
+	<p>弹出窗口</p>
+	<button onclick="alert('欢迎！')">点我弹窗！</botton>
+</body>
+</html>
